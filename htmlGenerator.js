@@ -5,30 +5,30 @@ const hourlyWeather = document.getElementById("hourlyWeatherContainer");
 export const getCurrentWeather = (data) => {
   currentWeather.innerHTML = `<h2>Current Weather</h2>
                               <img src="https://openweathermap.org/img/wn/${
-                                data.weather[0].icon
+                                data.list[0].weather[0].icon
                               }@2x.png" alt="weather icon">
-                              <p>${data.weather[0].description}</p>
+                              <p>${data.list[0].weather[0].description}</p>
                               <p>Temp: ${Math.round(
-                                data.main.temp - 273.15
+                                data.list[0].main.temp - 273.15
                               )}&#8451;</p>
-                              <p>Humidity: ${data.main.humidity}%</p>`;
+                              <p>Humidity: ${data.list[0].main.humidity}%</p>`;
 };
 
 //Get hourly weather (every 3 hours)
-export const getHourlyWeather = (forecastData) => {
+export const getHourlyWeather = (hourlyWeatherData) => {
   hourlyWeather.innerHTML = `<div class="hourlyWeather">
                              <h2>In 3 hours</h2>
                              <img src="https://openweathermap.org/img/wn/${
-                               forecastData.list[0].weather[0].icon
+                               hourlyWeatherData[0].weather[0].icon
                              }@2x.png" alt="weather icon">
                              <p>${
-                               forecastData.list[0].weather[0].description
+                               hourlyWeatherData[0].weather[0].description
                              }</p>
                              <p>Temp: ${Math.round(
-                               forecastData.list[0].main.temp - 273.15
+                               hourlyWeatherData[0].main.temp - 273.15
                              )}&#8451;</p>
                             <p>Humidity: ${
-                              forecastData.list[0].main.humidity
+                              hourlyWeatherData[0].main.humidity
                             }%</p>
                              </div>`;
 };

@@ -12,17 +12,16 @@ const hourlyWeather = document.getElementById("hourlyWeatherContainer");
 button.addEventListener("click", async () => {
   const value = cityName.value;
   try {
-    const currentWeatherAPI = `https://api.openweathermap.org/data/2.5/weather?q=${value}&appid=${apiKey}`;
-    const hourlyWeatherAPI = `https://api.openweathermap.org/data/2.5/forecast?q=${value}&appid=${apiKey}`;
+    const weatherAPI = `https://api.openweathermap.org/data/2.5/forecast?q=${value}&appid=${apiKey}`;
     //get weather info from both APIs
-    const { data } = await axios.get(currentWeatherAPI);
-    //set another variable for hourly weatherAPI since this cannot be destructured due to api1.
-    const api2 = await axios.get(hourlyWeatherAPI);
-    const forecastData = api2.data;
-    console.log(forecastData);
+    const { data } = await axios.get(weatherAPI);
+    //extract only necessary arrays by .slice
+    const hourlyWeatherData = data.list.slice(1, 5);
+    console.log(data);
+    console.log(hourlyWeatherData);
     //Run getCurrentWeather func & getHourlyWeather func
     getCurrentWeather(data);
-    getHourlyWeather(forecastData);
+    getHourlyWeather(hourlyWeatherData);
   } catch (error) {
     console.log(error);
     if (error.response) {
@@ -38,8 +37,12 @@ cityName.addEventListener("keydown", async (e) => {
   if (e.key === "Enter") {
     const value = cityName.value;
     try {
-      const currentWeatherAPI = `https://api.openweathermap.org/data/2.5/weather?q=${value}&appid=${apiKey}`;
-      const { data } = await axios.get(currentWeatherAPI);
+      const weatherAPI = `https://api.openweathermap.org/data/2.5/forecast?q=${value}&appid=${apiKey}`;
+      //get weather info from both APIs
+      const { data } = await axios.get(weatherAPI);
+      //extract only necessary arrays by .slice
+      const hourlyWeatherData = data.list.slice(1, 5);
+      //Run getCurrentWeather func & getHourlyWeather func
       getCurrentWeather(data);
     } catch (error) {
       console.log(error);
