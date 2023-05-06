@@ -4,20 +4,21 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weather Checker</title>
+    <title>Global Weather Checker</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;800&display=swap"
       rel="stylesheet"
     />
+    <link rel="icon" href="favicon/sun.png" />
+    <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script type="module" src="index.js"></script>
-    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div id="main" class="main">
-      <h1>CH14 Weather Checker</h1>
+      <h1>Global Weather Checker</h1>
       <input
         id="siteSearch"
         class="siteSearch"
@@ -28,10 +29,11 @@
         <button id="button" class="button" type="submit">Check Weather</button>
       </div>
     </div>
-    <!-- error message zone -->
-    <div id="errorMessage" class="errorMessage"></div>
     <!-- Weather info inserted -->
     <div id="currentWeatherContainer" class="currentWeatherContainer"></div>
     <div id="hourlyWeatherContainer" class="hourlyWeatherContainer"></div>
+    <footer>
+      <p><small>&copy; 2023 Kenta Kusakabe (CH14)</small></p>
+    </footer>
   </body>
 </html>

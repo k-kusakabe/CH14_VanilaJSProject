@@ -35,7 +35,7 @@ body {
   font-size: 1rem;
   font-weight: bold;
 }
-.currentWeatherContainer {
+.currentWeather {
   width: 80%;
   margin: auto;
   margin-top: 50px;
@@ -65,4 +65,65 @@ body {
   color: white;
   box-shadow: 5px 5px 5px #343a40;
   font-size: 1.2rem;
+}
+
+footer {
+  padding-bottom: 20px;
+}
+footer p {
+  text-align: center;
+  color: white;
+  font-size: 1.2rem;
+}
+
+/* min-width > 600px */
+@media screen and (min-width: 600px) {
+  .currentWeather {
+    font-size: 1.5rem;
+  }
+
+  .currentWeather img {
+    width: 30%;
+    height: 30%;
+  }
+
+  .hourlyWeather {
+    font-size: 1.5rem;
+  }
+  .hourlyWeather img {
+    width: 30%;
+    height: 30%;
+  }
+}
+
+/* min-width > 1200px */
+@media screen and (min-width: 1200px) {
+  .main h1 {
+    font-size: 3rem;
+  }
+
+  .main input {
+    font-size: 1.5rem;
+  }
+
+  .button {
+    width: 300px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+
+  .currentWeather {
+    width: 70%;
+    max-width: 1000px;
+  }
+
+  .hourlyWeatherContainer {
+    display: flex;
+    padding: 30px 10px;
+  }
+
+  .hourlyWeather {
+    width: 20%;
+    font-size: 1.2rem;
+  }
 }

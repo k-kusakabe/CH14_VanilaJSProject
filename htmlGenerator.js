@@ -3,7 +3,8 @@ const hourlyWeather = document.getElementById("hourlyWeatherContainer");
 
 //Get current weather
 export const getCurrentWeather = (data) => {
-  currentWeather.innerHTML = `<h2>Current Weather</h2>
+  currentWeather.innerHTML = `<div class="currentWeather">
+                              <h2>Current Weather</h2>
                               <img src="https://openweathermap.org/img/wn/${
                                 data.list[0].weather[0].icon
                               }@2x.png" alt="weather icon">
@@ -11,7 +12,9 @@ export const getCurrentWeather = (data) => {
                               <p>Temp: ${Math.round(
                                 data.list[0].main.temp - 273.15
                               )}&#8451;</p>
-                              <p>Humidity: ${data.list[0].main.humidity}%</p>`;
+                              <p>Humidity: ${
+                                data.list[0].main.humidity
+                              }%</p><div>`;
 };
 
 //Get hourly weather (every 3 hours)
