@@ -16,6 +16,10 @@ button.addEventListener("click", async () => {
     getCurrentWeather(data);
   } catch (error) {
     console.log(error);
-    currentWeather.innerHTML = `<p>City name is invalid. Enter a valid name</p>`;
+    if (error.response) {
+      currentWeather.innerHTML = `<h3 class="errorMessage1">City name is invalid. Enter a valid name</h3>`;
+    } else {
+      currentWeather.innerHTML = `<h3 class="errorMessage2">Currently, weather info cannot be accessed. Please visit the site later</h3>`;
+    }
   }
 });
