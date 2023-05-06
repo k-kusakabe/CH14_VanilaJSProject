@@ -12,8 +12,11 @@ button.addEventListener("click", async () => {
   const value = cityName.value;
   try {
     const currentWeatherAPI = `https://api.openweathermap.org/data/2.5/weather?q=${value}&appid=${apiKey}`;
+    const hourlyWeatherAPI = `https://api.openweathermap.org/data/2.5/forecast?q=London&appid=${apiKey}`;
     const { data } = await axios.get(currentWeatherAPI);
-    console.log(data);
+    const foreCastData = await axios.get(hourlyWeatherAPI);
+    // console.log(data);
+    console.log(foreCastData);
     getCurrentWeather(data);
   } catch (error) {
     console.log(error);
