@@ -1,5 +1,6 @@
 import { apiKey } from "./config.js";
 import { getCurrentWeather } from "./htmlGenerator.js";
+import { getHourlyWeather } from "./htmlGenerator.js";
 
 const button = document.getElementById("button");
 const cityName = document.getElementById("siteSearch");
@@ -12,12 +13,17 @@ button.addEventListener("click", async () => {
   const value = cityName.value;
   try {
     const currentWeatherAPI = `https://api.openweathermap.org/data/2.5/weather?q=${value}&appid=${apiKey}`;
-    const hourlyWeatherAPI = `https://api.openweathermap.org/data/2.5/forecast?q=London&appid=${apiKey}`;
+    const hourlyWeatherAPI = `https://api.openweathermap.org/data/2.5/forecast?q=${value}&appid=${apiKey}`;
+    //get weather info from both APIs
     const { data } = await axios.get(currentWeatherAPI);
-    const foreCastData = await axios.get(hourlyWeatherAPI);
+    //set another variable for hourly weatherAPI since this cannot be destructured due to api1.
+    const api2 = await axios.get(hourlyWeatherAPI);
+    const forecastData = api2.data;
     // console.log(data);
-    console.log(foreCastData);
+    console.log(forecastData);
+    //Run getCurrentWeather func & getHourlyWeather func
     getCurrentWeather(data);
+    getHourlyWeather(forecastData);
   } catch (error) {
     console.log(error);
     if (error.response) {
@@ -35,7 +41,6 @@ cityName.addEventListener("keydown", async (e) => {
     try {
       const currentWeatherAPI = `https://api.openweathermap.org/data/2.5/weather?q=${value}&appid=${apiKey}`;
       const { data } = await axios.get(currentWeatherAPI);
-      console.log(data);
       getCurrentWeather(data);
     } catch (error) {
       console.log(error);
