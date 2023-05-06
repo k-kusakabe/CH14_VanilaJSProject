@@ -1,7 +1,9 @@
+// import data from modules
 import { apiKey } from "./config.js";
 import { getCurrentWeather } from "./htmlGenerator.js";
 import { getHourlyWeather } from "./htmlGenerator.js";
 
+//get elements by ID
 const button = document.getElementById("button");
 const cityName = document.getElementById("siteSearch");
 const main = document.getElementById("main");
@@ -44,6 +46,7 @@ cityName.addEventListener("keydown", async (e) => {
       const hourlyWeatherData = data.list.slice(1, 5);
       //Run getCurrentWeather func & getHourlyWeather func
       getCurrentWeather(data);
+      getHourlyWeather(hourlyWeatherData);
     } catch (error) {
       console.log(error);
       if (error.response) {

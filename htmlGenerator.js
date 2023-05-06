@@ -16,19 +16,19 @@ export const getCurrentWeather = (data) => {
 
 //Get hourly weather (every 3 hours)
 export const getHourlyWeather = (hourlyWeatherData) => {
-  hourlyWeather.innerHTML = `<div class="hourlyWeather">
-                             <h2>In 3 hours</h2>
+  const timeArray = ["In 3 hours", "In 6 hours", "In 9 hours", "In 12 hours"];
+  const hourlyWeatherDataMap = hourlyWeatherData.map((item, index) => {
+    return `<div class="hourlyWeather">
+                             <h2>${timeArray[index]}</h2>
                              <img src="https://openweathermap.org/img/wn/${
-                               hourlyWeatherData[0].weather[0].icon
+                               item.weather[0].icon
                              }@2x.png" alt="weather icon">
-                             <p>${
-                               hourlyWeatherData[0].weather[0].description
-                             }</p>
+                             <p>${item.weather[0].description}</p>
                              <p>Temp: ${Math.round(
-                               hourlyWeatherData[0].main.temp - 273.15
+                               item.main.temp - 273.15
                              )}&#8451;</p>
-                            <p>Humidity: ${
-                              hourlyWeatherData[0].main.humidity
-                            }%</p>
+                            <p>Humidity: ${item.main.humidity}%</p>
                              </div>`;
+  });
+  hourlyWeather.innerHTML = hourlyWeatherDataMap.join("");
 };
