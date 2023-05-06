@@ -19,7 +19,6 @@ button.addEventListener("click", async () => {
     //set another variable for hourly weatherAPI since this cannot be destructured due to api1.
     const api2 = await axios.get(hourlyWeatherAPI);
     const forecastData = api2.data;
-    // console.log(data);
     console.log(forecastData);
     //Run getCurrentWeather func & getHourlyWeather func
     getCurrentWeather(data);
